@@ -1,0 +1,31 @@
+{
+  "name": "next14-cloudflare",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@splidejs/react-splide": "^0.7.12",
+    "framer-motion": "^10.16.4",
+    "mongodb": "^6.2.0",
+    "next": "^14.0.3-canary.5",
+    "next-themes": "^0.2.1",
+    "nprogress": "^0.2.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^4.11.0",
+    "react-query": "^3.39.3",
+    "sass": "^1.69.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.0",
+    "postcss": "^8",
+    "tailwindcss": "^3"
+  }
+}
