@@ -1,7 +1,7 @@
 import Loading from "@/components/Loading";
 import PersonMovies from "@/components/Person/PersonMovies";
 import { handleImgUrl } from "@/config/functions";
-import Image from "next/image";
+import Image from "@/components/ImageComponent";
 import { Suspense } from "react";
 
 const PersonProfileImage = ({ data }) => {

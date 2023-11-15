@@ -1,6 +1,6 @@
 import { SplideSlide } from "@splidejs/react-splide";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image from "@/components/ImageComponent";
 import { handleImgUrl, handleTime } from "@/config/functions";
 import Loading from "@/components/Loading";
 import Link from "next/link";
@@ -34,8 +34,6 @@ const Slide = ({ item, delay, slideType }) => {
           <div className={`relative rounded-lg h-full w-full ${loading && "animate-pulse"}`}>
             {loading && <Loading absloute />}
             <Image
-              alt=""
-              sizes="(max-width: 768px) 100vw"
               src={handleImgUrl(item, slideType, "w500")}
               fill
               className="rounded-lg"

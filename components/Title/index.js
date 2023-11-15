@@ -2,12 +2,10 @@ import HomeSlider from "@/components/Home/HomeSlider";
 import Details from "@/components/Title/Details";
 import Seasons from "@/components/Title/Season";
 import Trailer from "@/components/Title/Trailer";
-import { handleImgUrl } from "@/config/functions";
-import Image from "next/image";
+import { Suspense } from "react";
 
 const TitleComponent = ({ data, season: seasonId }) => {
-  const isValid = (value) =>
-    value && value.length > 0 ? true : false;
+  const isValid = (value) => (value && value.length > 0 ? true : false);
   const {
     details,
     similar,
@@ -23,33 +21,11 @@ const TitleComponent = ({ data, season: seasonId }) => {
       </div>
 
       <div className="flex flex-col gap-5 pt-5">
-        {details.seasons && (
-          <Seasons
-            season={season}
-            details={details}
-            seasonId={seasonId}
-          />
-        )}
-        {isValid(posters) && (
-          <HomeSlider
-            stack
-            title={`Images`}
-            data={posters}
-          />
-        )}
-        {isValid(cast) && (
-          <HomeSlider stack title={`Cast`} data={cast} />
-        )}
-        {isValid(crew) && (
-          <HomeSlider stack title={`Crew`} data={crew} />
-        )}
-        {isValid(similar.results) && (
-          <HomeSlider
-            stack
-            title="Similar To This"
-            data={similar.results}
-          />
-        )}
+        {details.seasons && <Seasons season={season} details={details} seasonId={seasonId} />}
+        <Suspense fallback={"Loading..."}>{isValid(posters) && <HomeSlider stack title={`Images`} data={posters} />}</Suspense>
+        {isValid(cast) && <HomeSlider stack title={`Cast`} data={cast} />}
+        {isValid(crew) && <HomeSlider stack title={`Crew`} data={crew} />}
+        {isValid(similar.results) && <HomeSlider stack title="Similar To This" data={similar.results} />}
       </div>
     </div>
   );

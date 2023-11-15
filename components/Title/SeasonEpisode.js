@@ -4,7 +4,7 @@ import MotionDiv from "@/components/MotionDiv";
 
 import { handleImgUrl } from "@/config/functions";
 import useLoading from "@/config/hooks/useLoading";
-import Image from "next/image";
+import Image from "@/components/ImageComponent";
 import Link from "next/link";
 
 const SeasonEpisode = ({ details, item, seasonId, i }) => {

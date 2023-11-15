@@ -1,7 +1,7 @@
 import React from "react";
 import { handleImgUrl } from "@/config/functions";
 import { SplideSlide } from "@splidejs/react-splide";
-import Image from "next/image";
+import Image from "@/components/ImageComponent";
 import { FaStar } from "react-icons/fa";
 import useLoading from "@/config/hooks/useLoading";
 import Loading from "@/components/Loading";

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image from "@/components/ImageComponent";
 import { handleImgUrl, handleTime } from "@/config/functions";
 import { SplideSlide } from "@splidejs/react-splide";
 import Loading from "@/components/Loading";

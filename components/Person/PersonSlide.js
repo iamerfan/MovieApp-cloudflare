@@ -2,7 +2,7 @@ import Loading from "@/components/Loading";
 import { handleImgUrl } from "@/config/functions";
 import useLoading from "@/config/hooks/useLoading";
 import { SplideSlide } from "@splidejs/react-splide";
-import Image from "next/image";
+import Image from "@/components/ImageComponent";
 import Link from "next/link";
 
 const PersonSlide = ({ i, item }) => {

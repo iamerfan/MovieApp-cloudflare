@@ -1,7 +1,7 @@
 "use client";
 import HomeSlider from "@/components/Home/HomeSlider";
 import { handleImgUrl } from "@/config/functions";
-import Image from "next/image";
+import Image from "@/components/ImageComponent";
 import Link from "next/link";
 import { PiCalendarFill, PiCaretLeft, PiCaretRight, PiStarFill, PiTimerFill } from "react-icons/pi";
 
