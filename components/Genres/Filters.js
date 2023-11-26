@@ -16,12 +16,13 @@ const Filters = ({ params }) => {
     { name: "Vote Average", value: "vote_average.desc" },
   ];
 
-  const handleChange = (e) => router.push(`/genres/${type}/${genre.id}/${page}/${e.target.value}`);
+  const handleChange = (e) =>
+    router.push(`/genres/${type}/${genre.id}/${page}/${e.target.value}`);
   return (
     <select
       onChange={handleChange}
       value={activeFilter}
-      className="text-xl w-40 capitalize text-center focus:border-none focus:outline-none dark:bg-black dark:text-white"
+      className="w-40 bg-transparent text-center text-xl capitalize focus:border-none focus:outline-none dark:text-white"
     >
       {filters.map((filter) => {
         return (

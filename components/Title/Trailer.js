@@ -1,36 +1,28 @@
 "use client";
 
-import Loading from "@/components/Loading";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaQuoteLeft } from "react-icons/fa";
-import {
-  PiCaretLeftLight,
-  PiCaretRightLight,
-} from "react-icons/pi";
+import { PiCaretLeftLight, PiCaretRightLight } from "react-icons/pi";
 
 const Trailer = ({ data }) => {
   const { videos } = data;
   const [index, setIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
 
   const handleClick = (type) => {
     if (type === "next" && index < videos.length - 1) {
-      setLoading(true);
       setIndex(index + 1);
     } else if (type === "prev" && index > 0) {
-      setLoading(true);
       setIndex(index - 1);
     }
   };
   return (
-    <div className="lg:min-h-[80vh]  lg:max-w-[65%] lg:border dark:border-white-30 border-black-30  flex flex-grow flex-col justify-end">
+    <div className="flex  flex-grow flex-col justify-end border-black-30  dark:border-white-30 lg:min-h-[80vh] lg:max-w-[65%] lg:border">
       <div className="trailer">
         {videos.length <= 0 ? (
           <h1>Sorry,No Video Has Been Found...</h1>
         ) : (
           <iframe
             width="853"
-            onLoad={() => setLoading(false)}
             height="480"
             src={`https://youtube.com/embed/${videos[index]}`}
             frameBorder={0}
@@ -39,42 +31,29 @@ const Trailer = ({ data }) => {
             title="Embedded youtube"
           />
         )}
-        {loading && (
-          <>
-            <Loading absloute />
-            <p className="absolute bottom-0 w-full text-center text-xl">
-              برای مشاهده تریلر از یوتیوب vpn خود را روشن
-              کنید
-            </p>
-          </>
-        )}
       </div>
-      <div className="border-t dark:border-white-30 border-black-30  w-full flex flex-col gap3">
-        <div className="lg:text-2xl flex items-center gap-5 lg:px-4 px-1 py-2">
-          <FaQuoteLeft className=" hidden lg:flex text-[2.5rem] opacity-50" />
+      <div className="gap3 flex w-full  flex-col border-black-30 dark:border-white-30 lg:border-t">
+        <div className="flex items-center gap-5 px-1 py-2 lg:px-4 lg:text-2xl">
+          <FaQuoteLeft className=" hidden text-[2.5rem] opacity-50 lg:flex" />
 
-          <div className="flex flex-col gap-2 w-full">
-            <div className="flex justify-between items-center w-full">
-              <h2 className="text-xl lg:text-2xl border-b dark:border-white-30 border-black-30 flex-grow w-full pb-3">
+          <div className="flex w-full flex-col gap-2">
+            <div className="flex w-full items-center justify-between">
+              <h2 className="w-full flex-grow border-black-30 text-xl dark:border-white-30 lg:border-b lg:pb-3 lg:text-2xl">
                 {data.details.title || data.details.name}
               </h2>
-              <div className=" flex items-center whitespace-nowrap gap-3  text-sm pb-2">
+              <div className=" flex items-center gap-3 whitespace-nowrap  pb-2 text-sm">
                 {index + 1} of {videos.length}
-                <div className="flex items-center text-xl gap-3">
-                  <button
-                    onClick={() => handleClick("prev")}
-                  >
+                <div className="flex items-center gap-3 text-xl">
+                  <button onClick={() => handleClick("prev")}>
                     <PiCaretLeftLight />
                   </button>
-                  <button
-                    onClick={() => handleClick("next")}
-                  >
+                  <button onClick={() => handleClick("next")}>
                     <PiCaretRightLight />
                   </button>
                 </div>
               </div>
             </div>
-            <p className="opacity-60 text-sm text-justify  lg:max-w-[500px]   lg:flex ">
+            <p className="text-justify text-sm opacity-60  lg:flex   lg:max-w-[500px] ">
               {data.extra.Plot}
             </p>
           </div>

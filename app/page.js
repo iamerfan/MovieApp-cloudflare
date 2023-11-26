@@ -1,7 +1,9 @@
 import BackgroundSlider from "@/components/Home/BackgroundSlider";
 import HomeSlider from "@/components/Home/HomeSlider";
+import Loading from "@/components/Loading";
 import Modal from "@/components/Search/Modal";
 import { fetchFromServer } from "@/config/functions";
+import { Suspense } from "react";
 export const runtime = "edge";
 
 const getData = async (type) => {
@@ -17,9 +19,9 @@ export default async function Home({ searchParams }) {
     <div className=" w-screen overflow-x-hidden flex flex-col gap-10">
       <Modal />
       <BackgroundSlider data={data[0]} />
-      <HomeSlider data={data[1]} title={`Trending `} />
-      <HomeSlider data={data[2]} title={`Upcoming`} />
-      <HomeSlider data={data[3]} title={`Top Rated`} />
+      <HomeSlider stack data={data[1]} title={`Trending `} />
+      <HomeSlider stack data={data[2]} title={`Upcoming`} />
+      <HomeSlider stack data={data[3]} title={`Top Rated`} />
     </div>
   );
 }

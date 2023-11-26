@@ -7,8 +7,8 @@ import { handleImageType, handleValid } from "@/config/functions";
 
 const HomeSlider = ({ title, data, stack }) => {
   return (
-    <motion.div className="flex flex-col flex-grow">
-      <motion.label className={`${!stack && "lg:ps-[4rem] "}  text-xl lg:text-3xl capitalize`} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
+    <motion.div className="flex flex-col flex-grow ps-4">
+      <motion.label className={`${!stack && "lg:ps-[4rem] "} text-3xl capitalize`} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
         {title === "multi" ? "Results " : title}
       </motion.label>
       <Slider className="py-3" options={smallBP(stack)}>

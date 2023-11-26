@@ -2,14 +2,11 @@ import { motion } from "framer-motion";
 import Image from "@/components/ImageComponent";
 import { handleImgUrl, handleTime } from "@/config/functions";
 import { SplideSlide } from "@splidejs/react-splide";
-import Loading from "@/components/Loading";
 import Link from "next/link";
 import { FaStar } from "react-icons/fa";
 import useType from "@/config/hooks/useType";
-import useLoading from "@/config/hooks/useLoading";
 
 const BigSlide = ({ item, delay }) => {
-  const { setLoading, loading } = useLoading(item);
   const { type } = useType();
 
   return (
@@ -21,22 +18,13 @@ const BigSlide = ({ item, delay }) => {
         className={`rounded-lg flex lg:h-[100vh] h-[70vh] lg:items-center items-end  justify-start relative `}
       >
         <Link href={`/${item.title || item.name}/${type}/${item.id}${type === "tv" ? "/1" : ""}`}>
-          {loading && (
-            <div
-              className="absolute  min-h-[70vh] lg:min-h-[100vh] top-0 bg-black bg-opacity-60 
-            animate-pulse w-full z-50  flex justify-center items-center "
-            >
-              <Loading />
-            </div>
-          )}
+
           <Image
             src={handleImgUrl(item, "backdrop")}
             fill
             sizes="(max-width: 768px) 100vw"
             alt=""
             priority
-            onLoadStart={() => setLoading(true)}
-            onLoad={() => setLoading(false)}
           />
           <div
             className=" text-white lg:mx-auto absolute left-1/2 lg:top-1/2 bottom-0 

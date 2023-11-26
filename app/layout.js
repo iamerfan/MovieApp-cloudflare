@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ProgressBar />
+        {/* <ProgressBar /> */}
         <Header />
         {children}
       </body>

@@ -2,15 +2,12 @@ import { SplideSlide } from "@splidejs/react-splide";
 import { motion } from "framer-motion";
 import Image from "@/components/ImageComponent";
 import { handleImgUrl, handleTime } from "@/config/functions";
-import Loading from "@/components/Loading";
 import Link from "next/link";
 import useType from "@/config/hooks/useType";
-import useLoading from "@/config/hooks/useLoading";
 import { PiStarFill } from "react-icons/pi";
 
 const Slide = ({ item, delay, slideType }) => {
   const { type } = useType();
-  const { loading, setLoading } = useLoading(item);
 
   const handleHref = () => {
     switch (slideType) {
@@ -31,14 +28,11 @@ const Slide = ({ item, delay, slideType }) => {
           transition={{ delay: delay * 0.1 }}
           className="flex min-h-[60vh] rounded-lg  w-full h-full max-w-[300px] "
         >
-          <div className={`relative rounded-lg h-full w-full ${loading && "animate-pulse"}`}>
-            {loading && <Loading absloute />}
+          <div className={`relative rounded-lg h-full w-full`}>
             <Image
               src={handleImgUrl(item, slideType, "w500")}
               fill
               className="rounded-lg"
-              onLoadStart={() => setLoading(true)}
-              onLoad={() => setLoading(false)}
             />
 
             {slideType === "poster" && <PosterSlide item={item} />}

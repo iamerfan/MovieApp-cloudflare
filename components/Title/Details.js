@@ -18,7 +18,15 @@ const Details = ({ data }) => {
           name: "IMDB",
           className: "bg-yellow-400 text-black",
           value: rating.Value,
-          logo: <img alt="" src={"/imdb.svg"} className="absolute left-0 z-30 top-1/2 -translate-y-1/2" width={50} height={20} />,
+          logo: (
+            <img
+              alt=""
+              src={"/imdb.svg"}
+              className="absolute left-0 top-1/2 z-30 -translate-y-1/2"
+              width={50}
+              height={20}
+            />
+          ),
         };
       if (rating.Source === "Rotten Tomatoes")
         return {
@@ -29,7 +37,7 @@ const Details = ({ data }) => {
             <img
               alt=""
               src={"/RT.svg"}
-              className="absolute left-1 bg-white p-1 py-2 rounded-lg z-30 top-1/2 -translate-y-1/2"
+              className="absolute left-1 top-1/2 z-30 -translate-y-1/2 rounded-lg bg-white p-1 py-2"
               width={50}
               height={20}
             />
@@ -41,7 +49,15 @@ const Details = ({ data }) => {
           className: "border border-black-30 dark:border-white-50",
           value: rating.Value,
 
-          logo: <img src={"/Meta.svg"} className="absolute left-0 z-30 top-1/2 -translate-y-1/2" alt="" width={30} height={30} />,
+          logo: (
+            <img
+              src={"/Meta.svg"}
+              className="absolute left-0 top-1/2 z-30 -translate-y-1/2"
+              alt=""
+              width={30}
+              height={30}
+            />
+          ),
         };
     }),
   ];
@@ -65,33 +81,38 @@ const Details = ({ data }) => {
   ];
 
   return (
-    <div className="flex relative flex-1 flex-col justify-end lg:max-w-md border dark:border-white-30 border-black-30  ">
-      <div className="absolute border  border-white-30 left-3 lg:-top-8 top-3 w-36 h-44 dark:bg-black bg-white">
+    <div className="relative flex flex-1 flex-col justify-end border-black-30 dark:border-white-30 lg:max-w-md lg:border  ">
+      <div className="absolute left-3  top-3 h-44 w-36 border border-white-30 bg-white dark:bg-black lg:-top-8">
         <Image src={handleImgUrl(details, "poster", "w500")} alt="" fill />
       </div>
-      <div className="capitalize  text-sm opacity-90 flex p-2 ps-3 lg:h-36 h-48 flex-col justify-between overflow-hidden left-[160px] absolute top-0 lg:w-64 ">
+      <div className="absolute  left-[160px] top-0 flex h-48 flex-col justify-between overflow-hidden p-2 ps-3 text-sm capitalize opacity-90 lg:h-36 lg:w-64 ">
         {TopDetails.map((item, i) => (
-          <p key={i} className=" text-justify dark:text-white text-black">
-            <i className="dark:text-white-60 me-2 whitespace-nowrap  ">{item.name} :</i>
+          <p key={i} className=" text-justify text-black dark:text-white">
+            <i className="me-2 whitespace-nowrap dark:text-white-60  ">
+              {item.name} :
+            </i>
             {item.data}
           </p>
         ))}
       </div>
-      <div className="flex-grow lg:max-h-[420px] overflow-auto flex flex-col gap-3 p-3  lg:mt-0 mt-[12rem] text-sm opacity-90 capitalize overflow-y-scroll ">
-        <div className="flex items-center gap-3 w-full flex-wrap ">
+      <div className="mt-[12rem] flex flex-grow flex-col gap-3 overflow-auto overflow-y-scroll  p-3 text-sm capitalize opacity-90 lg:mt-0 lg:max-h-[420px] ">
+        <div className="flex w-full flex-wrap items-center gap-3 ">
           {Ratings.map((rating, i) => (
-            <label key={i} className={` relative p-2 flex-1 text-right font-semibold ${rating.className}`}>
+            <label
+              key={i}
+              className={` relative flex-1 p-2 text-right font-semibold ${rating.className}`}
+            >
               {rating.logo}
               {rating.value}
             </label>
           ))}
         </div>
-        <div className="flex items-center gap-3 w-full flex-wrap">
+        <div className="flex w-full flex-wrap items-center gap-3">
           {details.genres.map((genre, i) => (
             <Link
               href={`/genres/${genre.id}`}
               key={i}
-              className=" min-w-[100px] whitespace-nowrap truncate text-center px-2 py-1 flex-1 bg-black text-white dark:bg-white dark:text-black "
+              className=" min-w-[100px] flex-1 truncate whitespace-nowrap bg-black px-2 py-1 text-center text-white dark:bg-white dark:text-black "
             >
               {genre.name}
             </Link>
@@ -99,8 +120,10 @@ const Details = ({ data }) => {
         </div>
 
         {BottomDetails.map((item, i) => (
-          <p key={i} className=" text-justify dark:text-white text-black">
-            <i className="dark:text-white-60 text-black-60 me-2 whitespace-nowrap  ">{item.name} :</i>
+          <p key={i} className=" text-justify text-black dark:text-white">
+            <i className="me-2 whitespace-nowrap text-black-60 dark:text-white-60  ">
+              {item.name} :
+            </i>
             {item.data}
           </p>
         ))}
